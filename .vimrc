@@ -1,8 +1,8 @@
 " This needs to be at the top of the file before any plugins are loaded.
-let g:mapleader="\<Space>"
+" Make sure spacebar doesn't have any mapping beforehand
+" nnoremap <SPACE> <Nop>
+let g:mapleader=" "
 let g:maplocalleader=","
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
 
 " Set the cursor shape to a line cursor in insert mode and a block cursor
 " Use a line cursor within insert mode and a block cursor everywhere else.
@@ -18,12 +18,8 @@ nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-" Needed for which-key plugin and easymotion
-set notimeout " Disable timeout for key mappings
-
-" increase the timeoutlen (default: 1000), don't add space around the equal sign
-set timeoutlen=5000
-
+"" Install plugins
+"" ===================================================================================================
 " https://github.com/junegunn/vim-plug/wiki/tutorial
 " Neovim doesn't seem to understand plug#begin when we try to source .vimrc
 " from Neovim init.vim
@@ -59,32 +55,26 @@ Plug 'justinmk/vim-sneak'
 " surround plugin. To use: "Hello world!" -> 'Hello world!'= cs"'
 Plug 'tpope/vim-surround'
 
-
 " Initialize plugin system
 " " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
 " " You can revert the settings after the call like so:
 " "   filetype indent off   " Disable file-type-specific indentation
 " "   syntax off            " Disable syntax highlighting
-
-" Which-key settings (IdeaVim)
-" set which-key " Not work in default Vim
-let g:WhichKeyDesc_display = "<leader>d Display options"
-let g:WhichKeyDesc_leader = "<leader> Leader key"
-
+"" ====================================================================================
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=10
 
+" increase the timeoutlen (default: 1000)
+set timeoutlen=500 " Needed if which-key is enabled
+
 " Some other general settings recommended
 " set linenumber " Not work in default Vim
 set showmode
 set showcmd
-
-" Easymotion settings
-" set easymotion " Not work in default Vim
 
 set clipboard+=unnamed " ensures that IdeaVim shares its clipboard with the system clipboard.
 set clipboard+=unnamedplus "Clipboard integration (from neovim)
@@ -95,19 +85,18 @@ set smartcase
 set incsearch " Incremental search
 set hlsearch " Highlight search results
 
-" Third party plugins
-" Not work with default Vim
-" set surround
-" set highlightedyank
-" set NERDTree
-" set sneak " Search for characters in the current line with s and S. ; and , to navigate between matches like f and F.
 
-
-" Leader commands
+"" Leader commands
+"" ============================
 
 " Open NERDTree
 map <leader>nt :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFocus<CR>
 
 " Jump around with easy easymotion
-map <leader>j <Plug>(easymotion-s)
+map <leader>j <Plug>(easymotion-sn)
+
+
+" Key maps for Which-key
+nnoremap <silent> <leader>      :<c-u>WhichKey       '<Space>'<CR>
+vnoremap <silent> <leader>      :<c-u>WhichKeyVisual '<Space>'<CR>
