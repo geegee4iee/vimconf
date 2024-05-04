@@ -1,0 +1,52 @@
+" Load from ~/.vimrc
+source ~/.vimrc
+
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+
+"" Leader commands
+
+" Close active tab
+map <leader>q <action>(CloseContent)
+map <leader>fr <action>(RecentFiles)
+
+" Comment lines
+map <leader>c <action>(CommentByLineComment)
+
+" Actions
+map <leader>ai <action>(ShowIntentionActions)
+map <leader>as <action>(SearchEverywhere)
+
+" File navigation
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>gb <Action>(Back)
+map <leader>gf <Action>(Forward)
+
+" Display options
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>dz <action>(ToggleZenMode)
+map <leader>df <action>(ToggleFullScreen)
+
+" https://www.jetbrains.com/help/idea/using-product-as-the-vim-editor.html#ide_actions
