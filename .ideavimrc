@@ -21,6 +21,8 @@ map Q gq
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
+set which-key
+set notimeout
 
 "" Leader commands
 
@@ -31,18 +33,37 @@ map <leader>fr <action>(RecentFiles)
 " Comment lines
 map <leader>c <action>(CommentByLineComment)
 
+" Split window
+map <leader>sv <action>(SplitVertically)
+map <leader>sh <action>(SplitHorizontally)
+map <leader>sn <action>(NextSplitter)
+map <leader>sp <action>(PreviousSplitter)
+map <leader>sm <action>(MoveEditorToOppositeTabGroup)
+
+
 " Actions
 map <leader>ai <action>(ShowIntentionActions)
 map <leader>as <action>(SearchEverywhere)
+map <leader>aa <action>(GotoAction)
 
 " File navigation
 map <leader>ff <action>(GotoFile)
 map <leader>fr <action>(RecentFiles)
 
 " Refactoring
-map <leader>rn <Action>(RenameElement)
+map <leader>rr <Action>(RenameElement)
 map <leader>gb <Action>(Back)
 map <leader>gf <Action>(Forward)
+map <leader>fc <Action>(ReformatCode)
+
+" Toggle breakpoint
+map <leader>tb <Action>(ToggleLineBreakpoint)
+
+" Terminal
+map <leader>ta <Action>(ActivateTerminalToolWindow)
+
+" View
+map <leader>vd <Action>(QuickJavaDoc)
 
 " Display options
 map <leader>dd <action>(ToggleDistractionFreeMode)
